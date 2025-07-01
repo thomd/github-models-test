@@ -1,6 +1,8 @@
 messages:
   - role: system
-    content: You are a helpful assistant that creates concise summaries of git diffs
+    content: >-
+      You are a helpful assistant that creates concise summaries of web page
+      content.
   - role: user
     content: >-
       Strip all HTML tags from the page
@@ -26,6 +28,9 @@ messages:
 
       Only output this summary, nothing more. The summary should be not langer
       than one or two sentences.
+
+      Do not mentions any HTML related information. Only summarize the stripped
+      content
 model: openai/gpt-4o
 testData:
   - page-content: |-
