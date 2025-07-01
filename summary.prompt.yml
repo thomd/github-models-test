@@ -1,0 +1,31 @@
+messages:
+  - role: system
+    content: You are a helpful assistant that creates concise summaries of git diffs
+  - role: user
+    content: >-
+      First, summarize the following html page.
+
+
+      """
+
+      {{page-content}}
+
+      """
+
+
+      Focus on the content, not on the HTML tags.
+
+
+      Then, given the following git diff of the page
+
+
+      """
+
+      {{git-diff}}
+
+      """
+
+
+      Then create a summary which describes what actually changed from a content
+      perpective
+model: openai/gpt-4o
