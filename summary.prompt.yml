@@ -3,7 +3,7 @@ messages:
     content: You are a helpful assistant that creates concise summaries of git diffs
   - role: user
     content: >-
-      First, summarize the following html page.
+      First strip all html tags from the page
 
 
       """
@@ -13,10 +13,7 @@ messages:
       """
 
 
-      Focus on the content, not on the HTML tags.
-
-
-      Then, given the following git diff of the page
+      Then, summary the what has changes of the page given the git diff
 
 
       """
@@ -26,6 +23,6 @@ messages:
       """
 
 
-      Then create a summary which describes what actually changed from a content
-      perpective
+      Only output the summary, nothing more. Summary should be not langer than
+      one or two sentences
 model: openai/gpt-4o
