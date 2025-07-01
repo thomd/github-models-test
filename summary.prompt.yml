@@ -3,7 +3,7 @@ messages:
     content: You are a helpful assistant that creates concise summaries of git diffs
   - role: user
     content: >-
-      First strip all html tags from the page
+      Strip all HTML tags from the page
 
 
       """
@@ -13,7 +13,8 @@ messages:
       """
 
 
-      Then, summary the what has changes of the page given the git diff
+      Summarize what has changed of the stripped page content given the
+      following git diff
 
 
       """
@@ -23,6 +24,45 @@ messages:
       """
 
 
-      Only output the summary, nothing more. Summary should be not langer than
-      one or two sentences
+      Only output this summary, nothing more. The summary should be not langer
+      than one or two sentences.
 model: openai/gpt-4o
+testData:
+  - page-content: |-
+      <!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>Dummy Page</title>
+        </head>
+        <body>
+          <h1>Dummy Page</h1>
+          <p>A large language model (LLM) is a language model trained with self-supervised machine learning on a vast amount of text, designed for natural language processing tasks, especially language generation.</p>
+        </body>
+      </html>
+    git-diff: >
+      diff --git a/index.html b/index.html
+
+      index 81de838..645763b 100644
+
+      --- a/index.html
+
+      +++ b/index.html
+
+      @@ -7,6 +7,6 @@
+         </head>
+         <body>
+           <h1>Dummy Page</h1>
+      -    <p>A large language model (LLM) is a language model trained with
+      self-supervised machine learning on a vast amount of text, designed for
+      natural language processing tasks, especially language generation.</p>
+
+      +    <p>A large language model (LLM) is a language model trained with
+      self-supervised machine learning on a vast amount of text, designed for
+      natural language processing tasks, especially language generation. The
+      largest and most capable LLMs are generative pretrained transformers
+      (GPTs)</p>
+         </body>
+       </html>
+evaluators: []
